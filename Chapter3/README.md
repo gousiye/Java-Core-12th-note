@@ -19,3 +19,8 @@
 1. case -> 不会自动下流。 case: 会自动下流
 2. `yield`返回，相当于switch表达式的值
 3. 在之前有yield的情况下， case -> 也有yield的作用
+
+
+## Break && Continue
+1. 没有<font color = 'cyan'>goto</font>，通过`标签break`来实现代码跳跃，主要用于一下跳出多重循环。goto是放在跳出语句块的下方；break是放在跳出语句块的上方。
+2. 也有类似的`标签continue`
