@@ -24,3 +24,24 @@
 ## Break && Continue
 1. 没有<font color = 'cyan'>goto</font>，通过`标签break`来实现代码跳跃，主要用于一下跳出多重循环。goto是放在跳出语句块的下方；break是放在跳出语句块的上方。
 2. 也有类似的`标签continue`
+
+
+## Big Numbers
+1. 在`java.math`中
+2. `BigDecimal`要用String来赋值，不要直接用小数，会有精度问题
+3. 没有运算符重载
+
+
+## Array
+1. 数组声明的时候可以用变量，例如`int[] a = new int [100]`。本质上就是C++中的`new`，不过不用自己delete了。
+2. 通过initializer_list进行赋值，例如`int[] arrayTest = {1,2,3,4}`
+3. 数组中元素Java会自动进行初始化。数值类为0, boolean为False, 对象类为null。
+4. `array1 = array2`，则两者共用同一块内存。`Array.copyOf()`实现深拷贝
+
+## for each
+1. 对于基本类型，`for(iter: varList)`, iter改变不会导致Array中的元素改变
+2. 对于`String[] strs`，`for(iter: strs)`, iter的hashcode始终是strs[0]的hashcode。由于String不可以被更改，当执行`iter += "str"`时候，iter实际上被赋值为了一个新的子串，因此hascode被更改了，不再与strs[0]共用内存了，因此不会有影响。
+3. 对于`integer`,`for(iter: varList)`iter和varList[i]中的hashCode()不同，两者不在一个内存区域，不会相互影响。 
+
+## args
+1. Java中args不包含程序名；C++中args包含程序名。
