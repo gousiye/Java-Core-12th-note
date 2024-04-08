@@ -37,6 +37,15 @@
 2. 通过initializer_list进行赋值，例如`int[] arrayTest = {1,2,3,4}`
 3. 数组中元素Java会自动进行初始化。数值类为0, boolean为False, 对象类为null。
 4. `array1 = array2`，则两者共用同一块内存。`Array.copyOf()`实现深拷贝
+5. `Arrays.toString(())`可以将一个数组转换为String的形式
+6. 遍历二维/多维Array的形式
+```
+for(int[] row: a){
+    for(int item: a){
+    }
+} 
+```
+7.`int [][]a = new int[]`在C++中等价于`int **a = new int* []`    
 
 ## for each
 1. 对于基本类型，`for(iter: varList)`, iter改变不会导致Array中的元素改变
