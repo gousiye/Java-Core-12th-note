@@ -22,7 +22,7 @@
 
 
 ## Break && Continue
-1. 没有<font color = 'cyan'>goto</font>，通过`标签break`来实现代码跳跃，主要用于一下跳出多重循环。goto是放在跳出语句块的下方；break是放在跳出语句块的上方。
+1. 没有<font color = 'blue'>goto</font>，通过`标签break`来实现代码跳跃，主要用于一下跳出多重循环。goto是放在跳出语句块的下方；break是放在跳出语句块的上方。
 2. 也有类似的`标签continue`
 
 
@@ -40,8 +40,9 @@
 
 ## for each
 1. 对于基本类型，`for(iter: varList)`, iter改变不会导致Array中的元素改变
-2. 对于`String[] strs`，`for(iter: strs)`, iter的hashcode始终是strs[0]的hashcode。由于String不可以被更改，当执行`iter += "str"`时候，iter实际上被赋值为了一个新的子串，因此hascode被更改了，不再与strs[0]共用内存了，因此不会有影响。
-3. 对于`integer`,`for(iter: varList)`iter和varList[i]中的hashCode()不同，两者不在一个内存区域，不会相互影响。 
+2. 对于`String[] strs`，由于String不可以被更改，当执行`iter += "str"`时候，iter实际上被赋值为了一个新的子串，因此hascode被更改了，不再与strs[0]共用内存了，因此不会有影响。
+3. 对于`integer`,`for(iter: varList)`,iter和varList[i]中的hasCode()就是数值本身。虽然相同，但是iter的改变<font color = "red">不改变varList</font>
+4. 对于`Object`类型，iter和objList[i]指向同一块内存，iter的更改会导致objList的改变。
 
 ## args
 1. Java中args不包含程序名；C++中args包含程序名。
