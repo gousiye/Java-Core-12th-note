@@ -25,5 +25,5 @@
 1. `git merge <branch>`将指定分支合并到当前分支上，<font color = "red">会引发合并冲突。</font>
 
 
-### 日志相关
+## 日志相关
 1. `git checkout <file>`。会从暂存区的内容覆盖到工作目录上的&lt;file&gt;。<font color = "red">没有`git checkout <file> --cached/--staged`</font>。如果想恢复暂存区的内容，直接使用`git reset <file>`即可。
