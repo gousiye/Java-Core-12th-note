@@ -4,9 +4,10 @@
 
 
 ## String 
-1. `String`不能被更改，通过构造一个新的String来改变。这样能使多个值一样的String引用同一块内存空间
-2. `==`判断引用位置是否相等， `equals`判断两个值相等
-3. 一般来说，1个字符是1个代码点。不过有些特殊字符可能由2个代码点组成。1个代码单元是存储字符的最小单位。<font color = 'red'>这条不是很确定</font>。 charAt 返回的是代码单元, codePointAt返回的是代码点
+1. `String`<font color = "red">不能被更改</font>，通过构造一个新的String来改变。这样能使多个值一样的String引用同一块内存空间
+2. 可以用`StringBuilder`来动态构造一个字符串。
+3. `==`判断引用位置是否相等， `equals`判断两个值相等
+4. 一般来说，1个字符是1个代码点。不过有些特殊字符可能由2个代码点组成。1个代码单元是存储字符的最小单位。<font color = 'red'>这条不是很确定</font>。 charAt 返回的是代码单元, codePointAt返回的是代码点
 
 
 ## Scanner 
