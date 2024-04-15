@@ -66,3 +66,15 @@
 1. record是一种状态无法被更改的类。record中字段本质上为`private final`类型。
 2. record的`getter`一般和字段同名，便于使用。
 3. record可以添加静态字段，方法，普通方法。<font color = "red">但是不能添加新的字段。</font>
+4. 会自动生成Canonical Constructor，将所有字段设置成形参的值
+5. 使用compact方法，先处理形参的值，然后再传递给Canonical Constructor。例如:\
+   ```
+   record Range(int from, int to){
+      public Range{
+         if(from < 0) form = 0
+         if(to < 0) to = 0
+      }
+   }
+   ```
+   在执行过程中，会先让from, to非负，然后再执行Range的Canonical Constructor
+
