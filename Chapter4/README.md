@@ -29,7 +29,7 @@
 9. method 可以访问这个类所有对象的私有成员。C++同理。
 
 ## 4.4 静态字段和方法
-1. `native method`，一半由C/C++编写的本地方法，可以绕过`final`进行修改。
+1. `native method`，一般由C/C++编写的本地方法，可以绕过`final`进行修改。
 2. <font color = "red">工厂方法</font>。工厂方法是静态方法，用于生成实例。使用工厂方法的理由如下：
       1. 需要通过两种方式进行构造，对应不同构造方法名字。但是构造方法只能和类名一致。
       2. 构造方法不能更改构造对象的类型，工厂方法可以。工厂方法可以返回一个基类，便于多态。  
@@ -78,3 +78,39 @@
    ```
    在执行过程中，会先让from, to非负，然后再执行Range的Canonical Constructor
 
+## 4.8 Packages
+1. `import *`不能用于含有subPackage的Package
+2. `import static`可以import一个类的静态字段和静态方法
+3. 即使.java不在自己所指定的Package中，也是可以成功编译的
+4. `JAR`将一个Package变为sealed，防止他人向该Package添加自己的类
+5. java虚拟机默认包含`.`。如果给了其它class path，没有给`.`的话，虚拟机不会寻找当前目录
+
+
+## 4.9 JAR
+1. `JAR`将一个Package封装在一起。JAR中可以有Package，class, 其它资源文件。
+2. 每个`JAR`中应该有一个manifest文件`MANIFEST.MF`，在`META-INF`目录中，来概括这个JAR包，主要包含以下部分：
+   ```
+   main section // 描述整个JAR包
+   Name: special part // 描述具体的部分
+   ```
+3. 在manifest中通过`Main-Class: com.mycompany.mypkg.MainAppClass`来设置JAR中的main class
+4. JAR可以将和版本相关的文件放到`version`中，提供不同版本的兼容性。如果当前版本在`version`中没有匹配的，就使用默认的在外面的Class版本。
+5. <font color = 'red'>multi-release JAR是为了解决不同java一致性的问题。不是针对不同版本的java采取不同的行动。</font>
+
+## 4.10 文档说明
+<font color = "orange">这块没有实际经验，看得比较粗略</font> 
+1. javadoc注释可以生成文档注释
+   ```
+   /**
+    */ 生成JavaDoc注释
+   ```
+2. 注释中可以使用HTML标签。也可以使用资源文件，将其放到`doc-files`中。标签中的资源路径的标签需要有doc-files，例如：
+   ```
+   <img src = "doc-files/...">
+   ```
+3. 方法一般包含`@param`，`@return`,`@throws`标注
+4. `@see`，`@link` 实现注解之间跳跃。`@see`可以和`<a href = ...>`，搭配。
+5. 对于package,需要添加单独的文件。
+   1. 使用`package-info.java`，在javadoc注释中
+   2.使用`package.html`，所有的文件在`<body>`中
+6. 使用`javadoc -d <docDirectory> <javaFile>`来生成注释文档。
