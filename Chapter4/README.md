@@ -14,7 +14,7 @@
 1. 一个.java源文件中只能有一个public类，并且public类和.java的名字要相同
 2. <font color = "red">`.class`是`.java`经过编译后产生的文件。</font>  
 3. `.java`是utf-8类型的文件，可以直接打开，编辑，是源码文件。`.class`文件是二进制文件，不能被打开，编辑。是JVM虚拟机能够理解的中间形式的代码。
-4. Java中有四种访问修饰符。`public`,`protected`,`default(默认不屑)`，`private`。其中`default`为默认，类成员只能被同一个包内的其它类访问。
+4. Java中有四种访问修饰符。`public`,`protected`,`default(默认不屑)`，`private`。其中`default`为默认，类成员只能被同一个包内的其它类访问。<font color = "red">`protected`可以被同package下的类和自己的派生类访问，通常不建议使用。</font>
 5. Java中<font color = "red">所有对象都声明在堆上</font>。因此只能使用`new`创造对象。
 6. `var`类似C++中的`auto`, 但是`auto`可以在形参列表中，而`var`不可以。
 7. 在C++中，在类内定义的方法会被认为是inline的。在Java中，所有方法都只能定义在类内。由JVM来判断方法是否为inline。
