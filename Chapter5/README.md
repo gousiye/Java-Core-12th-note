@@ -58,6 +58,17 @@
    ```
    <font color = "red">不使用wrapper对象的相等性，不要将其当作锁</font>
 4. 装箱，拆箱是编译器执行的，与虚拟机无关。
+5. <font color = "red">int 和 Integer 类型不能构成函数重写, 例如</font>
+   ```
+   class Base{
+    public int a(){return 1;}
+   }
+   class Derived extends Base{
+    @Override
+    public Integer a(){return 2;}
+   }
+   ```
+   @Override会报错，并非是重写
 
 ## 5.5 可变参数列表
 1. `Function(Type... values)` 实现可变参数列表。本质上values是一个Type类型的数组。
