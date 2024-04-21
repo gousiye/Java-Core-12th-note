@@ -10,7 +10,7 @@
 7. <font color = "red">形参的名称不作为函数签名，因此无论Java还是C++，重写虚函数的形参名称可以不同</font>
 8. 如果基类虚函数返回基类类型，派生类的虚函数可返回派生类型。虚函数的返回类型不是严格相等，是`compatible`
 9. `函数重载`是静态绑定，`虚函数`是动态绑定。动态绑定需要this这个implict parameter。
-10. `final class`不能被继承，且所有的方法是`final method`。`final method`不能被派生类重写。`final field`，定义后值不能被更改。
+10. `final class`不能被继承，且所有的方法是`final method`。`final method`不能被派生类重写。`final field`，定义后值不能被更改。对于`final object`的field字段来说，相当于是C++中的`Type * const p`，可以更改引用的值，但是不能引用其它对象。
 11. Java中通过`instanceof`实现类似C++中的`dynamic_cast`：基类向下转换为派生类。
     ```
     if base instanceof Derived{
