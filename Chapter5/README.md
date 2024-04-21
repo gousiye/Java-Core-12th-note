@@ -6,18 +6,28 @@
 3. <font color = "red">super指向基类。但并不是一个引用，不能将super的值赋值给其它对象。</font>通过super可以访问基类的成员，方法。
 4. this()在一个函数中调用自己的构造函数，super()在一个函数中调用父类的构造函数。<font color = "red">super()和this()其它构造函数必须在类中构造函数中的第一句</font>
 5. Java中没有`virtual`关键词，不过有`@Override`，重写函数就能实现多态。一般虚函数写在`Interface`中。C++中没有`Interface`，要实现多态必须要有`virtual`。
-6. Java不支持三角继承。作为补偿，Java中一个类可以同时实现多个接口。
-7. <font color = "red">形参的名称不作为函数签名，因此无论Java还是C++，重写虚函数的形参名称可以不同</font>
-8. 如果基类虚函数返回基类类型，派生类的虚函数可返回派生类型。虚函数的返回类型不是严格相等，是`compatible`
-9. `函数重载`是静态绑定，`虚函数`是动态绑定。动态绑定需要this这个implict parameter。
-10. `final class`不能被继承，且所有的方法是`final method`。`final method`不能被派生类重写。`final field`，定义后值不能被更改。对于`final object`的field字段来说，相当于是C++中的`Type * const p`，可以更改引用的值，但是不能引用其它对象。
-11. Java中通过`instanceof`实现类似C++中的`dynamic_cast`：基类向下转换为派生类。
+6. <font color = "red">C++，Java重写虚函数访问权限可以更加开放。</font>下面列子是可以的。
+    ```
+    class Base{
+        protected show(){}
+    } 
+    class Derived extends Base{
+        public show(){}
+    }
+    ```
+    C++虚函数基类方法可以是`private`，而Java不可以。
+7. Java不支持三角继承。作为补偿，Java中一个类可以同时实现多个接口。
+8. <font color = "red">形参的名称不作为函数签名，因此无论Java还是C++，重写虚函数的形参名称可以不同</font>
+9. 如果基类虚函数返回基类类型，派生类的虚函数可返回派生类型。虚函数的返回类型不是严格相等，是`compatible`
+10. `函数重载`是静态绑定，`虚函数`是动态绑定。动态绑定需要this这个implict parameter。
+11. `final class`不能被继承，且所有的方法是`final method`。`final method`不能被派生类重写。`final field`，定义后值不能被更改。对于`final object`的field字段来说，相当于是C++中的`Type * const p`，可以更改引用的值，但是不能引用其它对象。
+12. Java中通过`instanceof`实现类似C++中的`dynamic_cast`：基类向下转换为派生类。
     ```
     if base instanceof Derived{
         var obj = (Derived) base
     }
     ```
-12. 从Java16开始可以使用：
+13. 从Java16开始可以使用：
     ```
     if (base instanceof Base base)
     ```
