@@ -18,7 +18,7 @@
     C++虚函数基类方法可以是`private`，而Java不可以。
 7. Java不支持三角继承。作为补偿，Java中一个类可以同时实现多个接口。
 8. <font color = "red">形参的名称不作为函数签名，因此无论Java还是C++，重写虚函数的形参名称可以不同</font>
-9. 如果基类虚函数返回基类类型，派生类的虚函数可返回派生类型。虚函数的返回类型不是严格相等，是`compatible`
+9. 如果基类虚函数返回基类类型，派生类的虚函数可返回派生类型。虚函数的返回类型不是严格相等，是`compatible`。这里的本质是编译器自动在子类上生成了`Bridge Method`，参见[第8_5_3条](../Chapter8/README.md)
 10. `函数重载`是静态绑定，`虚函数`是动态绑定。动态绑定需要this这个implict parameter。
 11. `final class`不能被继承，且所有的方法是`final method`。`final method`不能被派生类重写。`final field`，定义后值不能被更改。对于`final object`的field字段来说，相当于是C++中的`Type * const p`，可以更改引用的值，但是不能引用其它对象。
 12. Java中通过`instanceof`实现类似C++中的`dynamic_cast`：基类向下转换为派生类。
@@ -48,7 +48,7 @@
    
 ## 5.3 泛型数组ArrayList
 1. `ArrayList`类似于C++中的`vector`
-2. <font color = "red">var array = new ArrayList<>()会返回一个ArrayList&lt;Object&gt;</font>
+2. <font color = "red">var array = new ArrayList<>()会返回一个ArrayList&lt;Object&gt;</font>，具体原因参考[第8_1_3条](../Chapter8/README.md)
 3. ArrayList中没有`[]`,使用`get`和`set`
 4. ArrayList默认也是每次扩容变为原来的1.5倍
 5. 编译器会将所有ArrayList&lt;Type&gt;转为ArrayList&lt;&gt;。在虚拟机运行期间，所有都是无类型的ArrayList&lt;&gt;。因此`(ArrayLlist<Typename>object)`会有警告。
