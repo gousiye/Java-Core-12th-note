@@ -67,7 +67,7 @@
     var timer = new Timer(1000,listener);
     ```
     上述例子中将`listener`对象进行回调。
-13. <font color = "red">Comparable&lt;T&gt;和Comparator&lt;T&gt;类似C++中sort重载<和声明cmp函数。Arrays.sort()使用了Comparator&lt;T&gt;的对象话，会按照对象中实现的compare进行排序。否则使用Comparable&lt;T&gt;中定义的比较进行排序。</font>`Comparator.naturaOrder()`是按照`Comparable.compareTo`进行比较的
+13. <font color = "red">Comparable&lt;T&gt;和Comparator&lt;T&gt;类似C++中sort重载<和声明cmp函数。Arrays.sort()使用了Comparator&lt;T&gt;的对象话，会按照对象中实现的compare进行排序。否则使用Comparable&lt;T&gt;中定义的比较进行排序。</font>`Comparator.naturalOrder()`是按照`Comparable.compareTo`进行比较的
     [_6_1_13.java](_6_1_13.java)
 14. `clone`是`Object`中的`protected`方法，任何对象可以访问。<font color = "red">但是Object.clone()声明了CloneNotSupportedException。当类没有实现`Cloneable`接口调用Object.clone()，会抛出该异常。因此一个类不实现`Cloneable`，无法调用`clone`。`Cloneable`接口本身不提供clone方法，只是作为一个标志，标记这个类可以进行clone。`clone`实际是重写`Object.clone()`方法。</font>`Cloneable`实际上是个`tagging interface`，用于进行判断。`if (obj instance of Cloneable)`
 15. `clone`默认行为同C++中的`=`，为浅复制。这会导致如果一个对象中有子对象的引用，经过clone后，两个对象中的子对象实际上指向同一块内存。要实现自己的clone()，类实现`Cloneable`方法，然后重写`clone()`方法。
