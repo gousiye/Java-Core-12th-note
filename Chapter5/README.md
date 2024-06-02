@@ -29,9 +29,9 @@
     ```
 13. 从Java16开始可以使用：
     ```
-    if (base instanceof Base base)
+    if (obj instanceof Base base)
     ```
-    base会覆盖掉同名的field
+    如果能够转换，那(Base)obj会自动绑定到base上
 
 ## 5.2 Object类
 1. 基本类型不是对象，但是基本类型的数组是对象，例如`int[]`是对象类型。
