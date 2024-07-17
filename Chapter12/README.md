@@ -153,7 +153,7 @@
 1. `blocking queue`。生产者消费者模型。`put-take`会阻塞线程, 被阻塞的线程会释放锁，行为是`conditional variable`，即在队列有空间并重新获得锁后直接从被阻塞的地方运行。被阻塞时`add-remove`会抛出异常，`peek-poll`会返回null。<font color = "red">block queue是一种消息队列</font>
 2. `blocking queue`是**线程安全**，但**不是原子性的**。如果多个线程同时向一个block queue添加元素，可以通过**锁机制**保证线程是安全的。在`blocking queue`的两头，都可以有多个线程来进行生产/消费 。
 相关示例程序可参考[BlockingQueue消息队列](./../Chapter12/BlockingQueue/MainThread.java)
-3. `ConcurrentHashMap`，`ConcurrentSkipListMap`, `ConcurrentSkipListSet`, and `ConcurrentLinkedQueue`都是线程安全的。分段上锁。**意味着两个线程可以同时在两个不同的区域进行写操作。**。
+1. `ConcurrentHashMap`，`ConcurrentSkipListMap`, `ConcurrentSkipListSet`, and `ConcurrentLinkedQueue`都是线程安全的。**意味着两个线程可以同时在两个不同的区域进行写操作。**。<font color = "orange">Java8之前是分段上锁，Java8及之后采用了CAS，乐观锁机制。</font>
    <br>`ConcurrentHashMap`中的`get`和`put`不是原子性的。
    ```
    Long oldValue = map.get(word);
@@ -162,8 +162,8 @@
    ```
    上述例子中在`get`后，其它线程可能抢占进行更新了。
    `ConcurrentHashMap`相比`HashMap`的线程安全性体现在**多个线程修改`ConcurrentHashMap`的时候，不会破坏数据的结构。** 使用`HashMap`时，如果多个线程同时进行修改，会导致该`HashMap`数据结构遭到破坏，不可用。
-4. 通过`compute`进行**原子更新**。 `map.compute(word, (k, v) -> v == null ? 1 : v + 1);` 类似的，使用`merge`也可以完成原子操作。 
-5. 在`ConcurrnetHashMap`上的批量操作有
+2. 通过`compute`进行**原子更新**。 `map.compute(word, (k, v) -> v == null ? 1 : v + 1);` 类似的，使用`merge`也可以完成原子操作。 
+3. 在`ConcurrnetHashMap`上的批量操作有
    + search 对每个键值对使用一个过滤函数f，返回第一个f不为空的键值对
    + reduce 累积键值对
    + forEach 在每个键值对上作用函数
@@ -184,10 +184,10 @@
           (k, v) -> k.equals("one") ? k + " -> " + v : null, // filter and transformer
           (s)-> System.out.println(s)); // the nulls are not passed to the consumer
    ```
-6. `ConcurrentHashMap.<T>newKeySet()`生成多线程安全的`Set`
-7. `CopyOnWriteArrayList`和`CopyOnWriteArraySet`在修改的时候会创建副本，不需要上锁，但是大量的副本会占用较多的内存。
-8. `Arrays.parallelSort()`用于并行排序。`Arrays.parallelSetAll()`用于并行设置。`Arrays.parallelPrefix()`用于并行推导，例如求和。**并行的线程数目默认是由Java决定**。
-9. `Vector`,`HashTable`是线程安全的，现在可以使用`synchronized`进行包装,
+4. `ConcurrentHashMap.<T>newKeySet()`生成多线程安全的`Set`
+5. `CopyOnWriteArrayList`和`CopyOnWriteArraySet`在修改的时候会创建副本，不需要上锁，但是大量的副本会占用较多的内存。
+6. `Arrays.parallelSort()`用于并行排序。`Arrays.parallelSetAll()`用于并行设置。`Arrays.parallelPrefix()`用于并行推导，例如求和。**并行的线程数目默认是由Java决定**。
+7. `Vector`,`HashTable`是线程安全的，现在可以使用`synchronized`进行包装,
    ```
    List<E> synchArrayList = Collections.synchronizedList(new ArrayList<E>());
    Map<K, V> synchHashMap = Collections.synchronizedMap(new HashMap<K, V>());
