@@ -48,7 +48,7 @@
    ```
    **限制了T类型的变量必须是给定类的子类（或者实现给定的接口）。**可以同时指定泛型变量的多个限制，使用`&`连接。<font color = "red">限制只有`and`逻辑，没有`or`逻辑</font>
    ```
-   public static <T extends classA & classB> void show(){} 
+   public static <T extends classA & interfaceB> void show(){} 
    ```
     <font color = "red">同继承一样，限制中最多只能有一个类，而且类要放到第一个</font>
    <font color = "orange">to add</font>
