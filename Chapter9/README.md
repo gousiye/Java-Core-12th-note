@@ -33,7 +33,7 @@
 1. `Collection`中的实现类
    ![image](_9_3_1.png)
 2. `Collection`中的`add`方法默认是添加在末尾的。如果想在中间添加元素，可以通过`Iterator`。由于类似`Set`这种集合与顺序无关，因此`add`方法实现在了`Iterator`的子接口`ListIterator`中。`ListIterator.add`在当前指向元素的前面添加元素。、
-3. `iterator.remove`<font color = "red">并不是删除`iterator`所指向的那个元素，而是最后一次`iterator.next()`返回的元素。对于`ListIterator.remove*()`则是最后一次`next`或者`previous`的元素。</font>
+3. `iterator.remove`<font color = "red">并不是删除`iterator`所指向的那个元素，而是最后一次`iterator.next()`返回的元素。对于`ListIterator.remove()`则是最后一次`next`或者`previous`的元素。</font>
 4. `set`也类似`remove`，更改最后一个返回的元素。
 5. Java中的`vector`是同步的。一般单线程用`ArrayList`就足够了。
 6. `HashSet`是无序的，通过`HashTable`实现的；`TreeSet`是序的，通过**红黑树**实现的。
