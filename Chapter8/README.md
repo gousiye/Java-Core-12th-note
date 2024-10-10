@@ -160,6 +160,6 @@
 2. `Pair<? super Manager>`表示泛型类型是Manager的超类。<font color = "red">能够set，不能get(get返回为Object可以)。</font>
 3. `public static <T extends Comparable<? super T>> Pair<T> minmax(T[] a)`是一个比较好限制泛型类型的例子。
 4. `pair<?>`。<font color = "red">不能进行`set`。`get`返回的是`Object`类型。</font>一般用于简单的操作。例如`public static boolean hasNulls(Pair<?> p)`，比使用`public static <T> boolean hasNulls(Pair<T> p)`要简洁很多。
-
+5. `<T extends ClassA>`用于泛型类的上下边界限定，`<? extends ClassA>`用于一个方法（**可以不是泛型方法**）参数的限定。
 ## *8.9 反射与泛型
 <font color = "orange">泛型和反射两个都一知半解的，直接跳</font>
