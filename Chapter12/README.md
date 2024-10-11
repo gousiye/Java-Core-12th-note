@@ -214,6 +214,7 @@
    finally{
    }
    ```
+   `futureTask.get()` **会阻塞当前线程，直至获得目标线程的返回值**。
 3. `Executors`，主要用于创建和管理线程池。
 4. `newCachedThreadPool`, `newCachedThreadPool`, `newSingleThreadExecutor`返回`ThreadPoolExecutor`类，该类实现了`ExecutorService`的接口
 5. `Future<T> excutor.submit(task)` 向线程池提交任务，返回`Future`对象。可以**判断是否结束、取消，获得返回值**。
