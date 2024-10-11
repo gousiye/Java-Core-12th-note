@@ -69,7 +69,7 @@
    ```
    `ReentrantLock`声明的`Lock`对象默认是**互斥锁**。**Lock不能放进`try-with-resources`中自动释放。**<font color = "red">ReentrantLock采取记数的方式。lock()，记数+1；unlock(), 记数-1。只有当记数为0的时候才会释放锁。</font>**本质上ReentrantLock就是信号量的机制，与C++中的shared_ptr的计数类似。**
 4. **出现异常可能会跳过临界区的部分代码，需要重点关注。**<font color = "red">需要有`finally`来释放锁。</font>
-5. `Condition Objects`，条件对象。**线程获得锁进入临界区，但是某些条件没有满足。释放锁进入wait状态，等待条件的满足。**条件对象是绑定在锁上的，声明如下：
+5. `Condition Objects`，条件对象。**线程获得锁进入临界区，但是某些条件没有满足。释放锁进入wait状态，等待条件的满足**。条件对象是绑定在锁上的，声明如下：
    ```
    ReentrantLock lock = new ReentrantLock();
    Condition conditionObj = lock.newCondition();
