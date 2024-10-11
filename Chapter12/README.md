@@ -87,7 +87,7 @@
    (1) 自动对方法lock和unlock。整个方法都在临界区中。
    (2) 可重入，隐式维护计数器。一个线程中可以递归调用该方法。整个递归结束才会释放锁
    (3) 有一个默认的条件对象。通过`wait`、`notify`和`notifyAll`分别进行`await`、`signal`和`signalAll`
-   <font color = "red">一个对象或者类中所有的synchronized method共用一个内部锁。如果synchronized method A 在执行，那么其它线程对于synchronized method B仍要等待内部锁释放。 </font>
+   <font color = "red">一个对象或者类中所有的synchronized method共用一个内部锁。如果synchronized method A 在执行，那么其它线程对于synchronized method B仍要等待内部锁释放。</font>对象级的synchronized和类级的synchronized不同，对象执行synchronized method的同时可以执行静态方法。
 7. Java中，每个类都有一个`Class`对象， 这个对象用于描述这个类的基本信息。**Class类本身也有Class对象**。对于类，通过`.class`来获得这个`Class`对象的引用。对于对象，通过`.getClass()`来获取。例如
    ```
    class MyClass{};
