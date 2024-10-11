@@ -27,7 +27,7 @@
 2. <font color = "red">Java中的中断不同于计算机组成原理中的硬件中断。</font>**Java中的中断更多是其它线程向本线程传递的一个信号。如果线程A完全忽略中断状态，线程B中断线程A不会对线程A产生任何影响。**
 3. <font color = "red">`run`中抛出的异常需要在`run`中解决。线程T的创建者无法捕获线程T的异常。</font>
 4. 设置守护线程，在`t.start`之前设置`t.setDaemon(true)`。守护线程主要为用户线程提供服务，例如计时器和垃圾回收。<font color = "red">只剩下守护线程时，虚拟机会结束运行。</font>
-5. `t.setName("threadName")`为线程设置名字，在线程转储中会很有用。
+5. `t.setName("threadName")`为线程设置名字，在线程转储中会很有用, **可以在thread.start()之后**
 6. 可以使用`thread.setUncaughtExceptionHandler(handler)`来为线程添加未处理异常的处理。其中`handler`是实现`Thread.UncaughtExceptionHandler`接口的一个类对象。
    ```
    public class MyUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
