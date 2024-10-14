@@ -147,7 +147,7 @@
       ThreadLocal<T> variable = ThreadLocal.withInitial(()->{new T()})
       T localVar = variable.get()
    ```
-   **ThreadLocal为每个线程创建的都是新的对象实例**
+   **ThreadLocal为每个线程创建的都是新的对象实例。当线程第一次访问ThreadLocal变量，为该线程创建独立的变量。如果线程从始至终都不访问ThreadLocal变量，则不会创建。**
 
 ## 12.5 线程安全集合
 1. `blocking queue`。生产者消费者模型。`put-take`会阻塞线程, 被阻塞的线程会释放锁，行为是`conditional variable`，即在队列有空间并重新获得锁后直接从被阻塞的地方运行。被阻塞时`add-remove`会抛出异常，`peek-poll`会返回null。<font color = "red">block queue是一种消息队列</font>
