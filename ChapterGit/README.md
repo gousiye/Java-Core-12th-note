@@ -31,5 +31,6 @@
 3. `git log --stat `可以查看每次commit对文件的增删改。
 4. `git cherry-pick <log_hash>`可以将再另一个分支上执行与改分支相同的commit。<font color = "red">老分支的commit记录还在。新分支的commit和老分支的commit的哈希值不同。</font>
 5. <font color = "red">重要！</font>`git reset`。有三种类型。`soft`, `hard`, `mix`，其中`mix`是默认值。 
-    + `--soft <log_hash>`：会清空指定hash值的commit记录。暂存区和工作目录都会保留更改。
-    +  sdf 
+    + `--soft <log_hash>`：回滚到指定hash值的commit记录。暂存区和工作目录都会保留更改。
+    + `--mixed <log_hash>`:  回滚到指定hash值的commit记录。工作目录都会保留更改，暂存区会恢复为最后提交的情况。解释了为何使用`git reset`将暂存区的文件移出。
+    +  `hard <log_hash>`: 回滚到指定hash值的commit记录。工作目录，暂存区的更改都会被移除。
