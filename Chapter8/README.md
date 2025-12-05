@@ -17,7 +17,9 @@
     }   
    ```
    其中<T>被推导为了Integer。
-   
+4. `<>`和`<?>`是不同的。`<>`根据上下文推断类型，`<?>`等价于`<? extends Object>`，没有指定类型限制。
+5. 类型擦除和声明对象无关。类型擦除后的类型只取决于<font color = "red">泛型类定义中</font>`<? extends xxx>`中的xxx类型，`Box<String> b1 = new Box<>("hello");`和``Box<? extends xxx> b1 = new Box<>("hello");``不影响类擦除后的类型。
+6. `Box<String> b1 = new Box<>("hello");` 中的`String`是告诉编译器让Object强转为`String`。
 
 ## 8.2 简易实现泛型类
 1. 定义一个最简单的泛型类
