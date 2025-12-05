@@ -164,4 +164,5 @@
 4. `pair<?>`。<font color = "red">不能进行`set`。`get`返回的是`Object`类型。</font>一般用于简单的操作。例如`public static boolean hasNulls(Pair<?> p)`，比使用`public static <T> boolean hasNulls(Pair<T> p)`要简洁很多。
 5. `<T extends ClassA>`用于泛型类的上下边界限定，`<? extends ClassA>`用于一个方法（**可以不是泛型方法**）参数的限定。
 ## *8.9 反射与泛型
-<font color = "orange">泛型和反射两个都一知半解的，直接跳</font>
+1. 反射就是获取`class`, `field`, `constructor`, `method`，动态获得一个类的全部信息，包括私有的
+2. 反射是动态代理和`AOP`的基础
